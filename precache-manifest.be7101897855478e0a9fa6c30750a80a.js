@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "71d15face4c7c770a33db53f4017837e",
+    "revision": "4edfbda4d3ea59d6a991bcde55965fe2",
     "url": "/lupus-yonderboy/index.html"
   },
   {
