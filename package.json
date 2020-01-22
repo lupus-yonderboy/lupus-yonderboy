@@ -2,7 +2,7 @@
   "name": "lupus-yonderboy",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://lupus-yonderboy.github.io/lupus-yonderboy",
+  "homepage": "https://lupus-yonderboy.github.io/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.2.3",
     "@testing-library/jest-dom": "^4.2.4",
