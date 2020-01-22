@@ -6,26 +6,28 @@ import { About } from './About';
 import { Header } from './Header';
 import './App.css';
 
+const urlPrefix = '/lupus-yonderboy';
+
 export const App = () => {
   return (
     <Router>
       <Header>
         <div>
           <span className='header-span'>
-            <Link to='/' className='header-link'>
+            <Link to={urlPrefix + '/'} className='header-link'>
               HOME
             </Link>
           </span>
           <span className='header-span'>
-            <Link to='/about' className='header-link'>
+            <Link to={urlPrefix + '/about'} className='header-link'>
               ABOUT
             </Link>
           </span>
         </div>
       </Header>
       <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path='/about' component={About} />
+        <Route exact path={urlPrefix + '/'} component={Home} />
+        <Route path={urlPrefix + '/about'} component={About} />
       </Switch>
     </Router>
   );
