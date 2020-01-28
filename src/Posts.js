@@ -5,20 +5,32 @@ import { Container } from './Container';
 const posts = [];
 
 export class Posts extends Component {
+  renderPosts(posts) {
+    return posts.map((post) => {
+      return <div>{post.title}</div>
+    });
+  }
+
   componentDidMount() {
-    fetch('http://lupus-yonderboy-go-env.wv5mqwfbqj.us-east-1.elasticbeanstalk.com/posts')
+    fetch('http://lupus-yonderboy-go-env.wv5mqwfbqj.us-east-1.elasticbeanstalk.com/posts', {
+      headers: {
+        'Origin': 'https://lupus-yonderboy.github.io',
+      }
+    })
       .then((res) => {
         return res.json();
       })
       .then((json) => {
-        console.log(json);
+        for (let post in json) {
+          posts.push(post);
+        }
       })
   }
 
   render() {
     return (
       <Container>
-        laughing out loud.
+        {this.renderPosts(posts)}
       </Container>
     );
   }
