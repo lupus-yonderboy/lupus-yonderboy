@@ -22,6 +22,7 @@ export class Posts extends Component {
       .then((json) => {
         for (let post in json) {
           this.posts = [ ...this.posts, post ];
+          console.log(this.posts);
         }
       })
   }
