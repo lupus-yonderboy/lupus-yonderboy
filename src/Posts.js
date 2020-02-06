@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 
 import { Container } from './Container';
 
-const posts = [];
-
 export class Posts extends Component {
+  constructor(props) {
+    super(props);
+    this.posts = [];
+  }
+
   renderPosts(posts) {
     return posts.map((post) => {
       return <div>{post.title}</div>
@@ -17,9 +20,8 @@ export class Posts extends Component {
         return res.json();
       })
       .then((json) => {
-        console.log(json);
         for (let post in json) {
-          posts.push(post);
+          this.posts = [ ...this.posts, post ];
         }
       })
   }
@@ -27,7 +29,7 @@ export class Posts extends Component {
   render() {
     return (
       <Container>
-        {this.renderPosts(posts)}
+        {this.renderPosts(this.posts)}
       </Container>
     );
   }
