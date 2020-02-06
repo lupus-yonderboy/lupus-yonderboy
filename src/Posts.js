@@ -10,7 +10,12 @@ export class Posts extends Component {
 
   renderPosts(posts) {
     return posts.map((post) => {
-      return <div>{post.title}</div>
+      return (
+        <div>
+          {post.Title}
+          {post.Content}
+        </div>
+      );
     });
   }
 
@@ -22,7 +27,6 @@ export class Posts extends Component {
       .then((json) => {
         for (let post of json) {
           this.posts = [ ...this.posts, post ];
-          console.log(this.posts);
         }
       })
   }
