@@ -11,6 +11,7 @@ export class Posts extends Component {
   renderPosts(posts) {
     return posts.map((post) => {
       return (
+        console.log(post, post.Title, post.title, post.Content, post.content);
         <div>
           {post.Title}
           {post.Content}
