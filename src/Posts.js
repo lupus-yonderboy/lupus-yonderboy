@@ -12,12 +12,7 @@ export class Posts extends Component {
   }
 
   componentDidMount() {
-    fetch('http://lupus-yonderboy-go-env.wv5mqwfbqj.us-east-1.elasticbeanstalk.com/posts', {
-      headers: {
-        'Origin': 'https://lupus-yonderboy.github.io',
-        'Upgrade-Insecure-Requests': '1'
-      }
-    })
+    fetch('https://lupus-yonderboy-go-env.wv5mqwfbqj.us-east-1.elasticbeanstalk.com/posts')
       .then((res) => {
         return res.json();
       })
