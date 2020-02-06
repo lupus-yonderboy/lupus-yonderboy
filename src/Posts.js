@@ -20,7 +20,7 @@ export class Posts extends Component {
         return res.json();
       })
       .then((json) => {
-        for (let post in json) {
+        for (let post of json) {
           this.posts = [ ...this.posts, post ];
           console.log(this.posts);
         }
