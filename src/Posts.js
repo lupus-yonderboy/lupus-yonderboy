@@ -17,6 +17,7 @@ export class Posts extends Component {
         return res.json();
       })
       .then((json) => {
+        console.log(json);
         for (let post in json) {
           posts.push(post);
         }
