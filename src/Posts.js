@@ -7,7 +7,8 @@ export class Posts extends Component {
       super(props);
       this.state = {
         posts: [],
-        loading: null,
+        authorsLoading: null,
+        postsLoading: null,
         time: null,
         error: null,
       };
@@ -37,11 +38,14 @@ export class Posts extends Component {
       ? 'https://lupus-yonderboy-go-env.wv5mqwfbqj.us-east-1.elasticbeanstalk.com/'
       : 'https://localhost:5000/';
 
-    this.setState({ loading: true });
+    this.setState({
+      postsLoading: true,
+      authorsLoading: true
+    });
 
     const timer = (time) => {
       setTimeout(() => {
-        if (this.state.loading) {
+        if (this.state.postsLoading) {
           time += 50;
           this.setState({ time: time });
           timer(time);
@@ -68,7 +72,7 @@ export class Posts extends Component {
         this.setState({ error: ':(' });
       })
       .finally(() => {
-        this.setState({ loading: false });
+        this.setState({ postsLoading: false });
       })
 
     fetch(url + 'authors')
@@ -88,12 +92,22 @@ export class Posts extends Component {
           posts: posts
         });
       })
+      .catch(() => {
+        this.setState({ error: ':(' });
+      })
+      .finally(() => {
+        this.setState({ authorsLoading: false });
+      })
   }
 
   render() {
     return (
       <Container>
-        {this.state.loading ? this.state.time : this.state.error}
+        {
+          this.state.postsLoading || this.state.authorsLoading
+            ? this.state.time
+            : this.state.error
+        }
         {this.renderPosts(this.state.posts)}
       </Container>
     );
