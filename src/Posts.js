@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Container } from './Container';
 
+import { Container } from './Container';
+import './App.css';
 
 export class Posts extends Component {
     constructor(props) {
