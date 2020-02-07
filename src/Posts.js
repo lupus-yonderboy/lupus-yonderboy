@@ -10,6 +10,7 @@ export class Posts extends Component {
         loading: null,
         time: null,
         error: null,
+        showAuthors: null,
       };
     }
 
@@ -19,6 +20,9 @@ export class Posts extends Component {
         <div key={post.Id}>
           <div>
             {post.Title}
+          </div>
+          <div>
+            {this.state.showAuthors ? post._authorName : null}
           </div>
           <div>
             {post.Content}
@@ -66,6 +70,22 @@ export class Posts extends Component {
       })
       .finally(() => {
         this.setState({ loading: false });
+      })
+
+    fetch(url + 'authors')
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        let posts = this.state.posts;
+        let authors = {};
+        for (let author of json) {
+          authors[author.Id] = author.Name;
+        }
+        for (let post of posts) {
+          post._authorName = authors[post.Author];
+        }
+        this.setState({ showAuthors: true });
       })
   }
 
