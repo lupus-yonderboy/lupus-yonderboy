@@ -26,7 +26,7 @@ export class Posts extends Component {
     });
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const environment = process.env.NODE_ENV || 'production';
     const url = environment === 'production'
       ? 'https://lupus-yonderboy-go-env.wv5mqwfbqj.us-east-1.elasticbeanstalk.com/'
