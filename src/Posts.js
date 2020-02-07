@@ -49,8 +49,6 @@ export class Posts extends Component {
           time += 50;
           this.setState({ time: time });
           timer(time);
-        } else {
-          this.setState({ time: 0 });
         }
       }, 10);
     }
