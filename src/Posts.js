@@ -10,7 +10,6 @@ export class Posts extends Component {
         loading: null,
         time: null,
         error: null,
-        showAuthors: null,
       };
     }
 
@@ -22,7 +21,7 @@ export class Posts extends Component {
             {post.Title}
           </div>
           <div>
-            {this.state.showAuthors ? post._authorName : 'Anonymous'}
+            {post.hasOwnProperty(_authorName) ? post._authorName : 'Anonymous'}
           </div>
           <div>
             {post.Content}
@@ -86,8 +85,7 @@ export class Posts extends Component {
           post._authorName = authors[post.Author];
         }
         this.setState({
-          posts: posts,
-          showAuthors: true
+          posts: posts
         });
       })
   }
