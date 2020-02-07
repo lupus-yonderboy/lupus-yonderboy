@@ -18,13 +18,13 @@ export class Posts extends Component {
     return posts.map((post) => {
       return (
         <div key={post.Id}>
-          <div>
+          <div className="title">
             {post.Title}
           </div>
-          <div>
+          <div className="author">
             {post.hasOwnProperty('_authorName') ? post._authorName : 'Anonymous'}
           </div>
-          <div>
+          <div className="content">
             {post.Content}
           </div>
         </div>
@@ -101,13 +101,13 @@ export class Posts extends Component {
   render() {
     return (
       <Container>
-        {
-          this.state.postsLoading
-            ? this.state.time
-            : this.state.error
-        }
+        {this.state.postsLoading ? this.state.time : this.state.error}
         {this.renderPosts(this.state.posts)}
-        {this.state.authorsLoading ? null : ':)'}
+        {
+          this.state.authorsLoading || this.state.postsLoading
+            ? null
+            : <div className="smile">:)</div>
+        }
       </Container>
     );
   }
