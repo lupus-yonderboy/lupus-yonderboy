@@ -21,7 +21,7 @@ export class Posts extends Component {
             {post.Title}
           </div>
           <div>
-            {post.hasOwnProperty(_authorName) ? post._authorName : 'Anonymous'}
+            {post.hasOwnProperty('_authorName') ? post._authorName : 'Anonymous'}
           </div>
           <div>
             {post.Content}
