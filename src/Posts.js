@@ -85,7 +85,10 @@ export class Posts extends Component {
         for (let post of posts) {
           post._authorName = authors[post.Author];
         }
-        this.setState({ showAuthors: true });
+        this.setState({
+          posts: posts,
+          showAuthors: true
+        });
       })
   }
 
