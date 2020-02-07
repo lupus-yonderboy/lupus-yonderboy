@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { Container } from './Container';
 
 
-
 export class Posts extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        posts: []
+        posts: [],
+        loading: null,
+        time: null,
+        error: null,
       };
     }
 
@@ -32,6 +34,22 @@ export class Posts extends Component {
       ? 'https://lupus-yonderboy-go-env.wv5mqwfbqj.us-east-1.elasticbeanstalk.com/'
       : 'https://localhost:5000/';
 
+    this.setState({ loading: true });
+
+    const timer = (time) => {
+      setTimeout(() => {
+        if (this.state.loading) {
+          time += 50;
+          this.setState({ time: time });
+          timer(time);
+        } else {
+          this.setState({ time: 0 });
+        }
+      }, 10);
+    }
+
+    timer(0);
+
     fetch(url + 'posts')
       .then((res) => {
         return res.json();
@@ -43,11 +61,18 @@ export class Posts extends Component {
           });
         }
       })
+      .catch(() => {
+        this.setState({ error: ':(' });
+      })
+      .finally(() => {
+        this.setState({ loading: false });
+      })
   }
 
   render() {
     return (
       <Container>
+        {this.state.loading ? this.state.time : this.state.error}
         {this.renderPosts(this.state.posts)}
       </Container>
     );
