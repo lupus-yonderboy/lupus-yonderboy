@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Container } from './Container';
-import './App.css';
+import './Posts.css';
 
 export class Posts extends Component {
     constructor(props) {
