@@ -45,7 +45,7 @@ export class Posts extends Component {
 
     const timer = (time) => {
       setTimeout(() => {
-        if (this.state.postsLoading) {
+        if (this.state.postsLoading || this.state.authorsLoading) {
           time += 50;
           this.setState({ time: time });
           timer(time);
