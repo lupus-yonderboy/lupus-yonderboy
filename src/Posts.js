@@ -102,11 +102,12 @@ export class Posts extends Component {
     return (
       <Container>
         {
-          this.state.postsLoading || this.state.authorsLoading
+          this.state.postsLoading
             ? this.state.time
             : this.state.error
         }
         {this.renderPosts(this.state.posts)}
+        {this.state.authorsLoading ? null : ':)'}
       </Container>
     );
   }
