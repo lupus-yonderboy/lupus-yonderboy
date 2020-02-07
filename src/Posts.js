@@ -22,7 +22,7 @@ export class Posts extends Component {
             {post.Title}
           </div>
           <div>
-            {this.state.showAuthors ? post._authorName : null}
+            {this.state.showAuthors ? post._authorName : 'Anonymous'}
           </div>
           <div>
             {post.Content}
