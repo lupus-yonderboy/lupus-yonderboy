@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { Container } from './Container';
 import './Posts.css';
 
-export class Posts extends Component {
+import { setPosts } from './actions';
+
+class Posts extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        posts: [],
         loading: null,
         time: null,
         error: null,
@@ -41,7 +43,26 @@ export class Posts extends Component {
       ? 'https://lupus-yonderboy-go-env.wv5mqwfbqj.us-east-1.elasticbeanstalk.com/'
       : 'http://localhost:5000/';
 
-    this.setState({ loading: true });
+    const fetchPosts = fetch(url + 'posts')
+      .then((res) => res.json());
+
+    const fetchAuthors = fetch(url + 'authors')
+      .then((res) => res.json());
+
+    const associatePostsWithAuthors = ({ postsRes, authorsRes }) => {
+      const authors = {};
+      const posts = [];
+      for (let author of authorsRes) {
+        authors[author.Id] = author.Name;
+      }
+      for (let post of postsRes) {
+        posts.push({
+          _authorName: authors[post.Author],
+          ...post,
+        });
+      }
+      return posts;
+    };
 
     const timer = (time) => {
       setTimeout(() => {
@@ -51,42 +72,24 @@ export class Posts extends Component {
           timer(time);
         }
       }, 10);
+    };
+
+    if (this.props.posts.length) {
+      return;
     }
 
+    this.setState({ loading: true });
+    
     timer(0);
 
-    fetch(url + 'posts')
+    Promise.all([fetchPosts, fetchAuthors])
       .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        for (let post of json) {
-          this.setState({
-            posts: [ ...this.state.posts, post ]
-          });
-        }
-      })
-      .then(() => {
-        fetch(url + 'authors')
-          .then((res) => {
-            return res.json();
-          })
-          .then((json) => {
-            let posts = this.state.posts;
-            let authors = {};
-            for (let author of json) {
-              authors[author.Id] = author.Name;
-            }
-            for (let post of posts) {
-              post._authorName = authors[post.Author];
-            }
-            this.setState({
-              posts: posts
-            });
-          })
-          .catch(() => {
-            throw new Error();
-          })
+        this.props.setPosts(
+          associatePostsWithAuthors({
+            postsRes: res[0],
+            authorsRes: res[1],
+          }),
+        );
       })
       .catch(() => {
         this.setState({ error: ':(' });
@@ -94,7 +97,7 @@ export class Posts extends Component {
       .finally(() => {
         this.setState({ loading: false });
       })
-  }
+  } // end componentDidMount
 
   render() {
     return (
@@ -102,8 +105,23 @@ export class Posts extends Component {
         {this.state.loading
             ? this.state.time
             : this.state.error}
-        {this.renderPosts(this.state.posts)}
+        {this.renderPosts(this.props.posts)}
       </Container>
     );
   }
 };
+
+const mapStateToProps = (state) => ({
+  posts: state.posts,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setPosts: (posts) => {
+    return dispatch(setPosts(posts));
+  },
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Posts);
