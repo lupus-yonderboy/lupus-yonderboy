@@ -8,8 +8,7 @@ export class Posts extends Component {
       super(props);
       this.state = {
         posts: [],
-        authorsLoading: null,
-        postsLoading: null,
+        loading: null,
         time: null,
         error: null,
       };
@@ -23,7 +22,11 @@ export class Posts extends Component {
             {post.Title}
           </div>
           <div className="author">
-            {post.hasOwnProperty('_authorName') ? post._authorName : 'Anonymous'}
+            {
+              post.hasOwnProperty('_authorName')
+                ? post._authorName
+                : 'Anonymous'
+            }
           </div>
           <div className="content">
             {post.Content.slice(0, 230) + ' ...'}
@@ -39,14 +42,11 @@ export class Posts extends Component {
       ? 'https://lupus-yonderboy-go-env.wv5mqwfbqj.us-east-1.elasticbeanstalk.com/'
       : 'http://localhost:5000/';
 
-    this.setState({
-      postsLoading: true,
-      authorsLoading: true
-    });
+    this.setState({ loading: true });
 
     const timer = (time) => {
       setTimeout(() => {
-        if (this.state.postsLoading) {
+        if (this.state.loading) {
           time += 10;
           this.setState({ time: time });
           timer(time);
@@ -67,47 +67,47 @@ export class Posts extends Component {
           });
         }
       })
-      .catch(() => {
-        this.setState({ error: ':(' });
-      })
-      .finally(() => {
-        this.setState({ postsLoading: false });
-      })
-
-    fetch(url + 'authors')
-      .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        let posts = this.state.posts;
-        let authors = {};
-        for (let author of json) {
-          authors[author.Id] = author.Name;
-        }
-        for (let post of posts) {
-          post._authorName = authors[post.Author];
-        }
-        this.setState({
-          posts: posts
-        });
+      .then(() => {
+        fetch(url + 'authors')
+          .then((res) => {
+            return res.json();
+          })
+          .then((json) => {
+            let posts = this.state.posts;
+            let authors = {};
+            for (let author of json) {
+              authors[author.Id] = author.Name;
+            }
+            for (let post of posts) {
+              post._authorName = authors[post.Author];
+            }
+            this.setState({
+              posts: posts
+            });
+          })
+          .catch(() => {
+            throw new Error();
+          })
       })
       .catch(() => {
         this.setState({ error: ':(' });
       })
       .finally(() => {
-        this.setState({ authorsLoading: false });
+        this.setState({ loading: false });
       })
   }
 
   render() {
     return (
       <Container>
-        {this.state.postsLoading ? this.state.time : this.state.error}
-        {this.renderPosts(this.state.posts)}
         {
-          this.state.authorsLoading || this.state.postsLoading
+          this.state.loading
+            ? this.state.time
+            : this.state.error
+        } {
+          this.state.loading
             ? null
-            : <div className="smile">:)</div>
+            : this.renderPosts(this.state.posts)
         }
       </Container>
     );

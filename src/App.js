@@ -4,6 +4,7 @@ import { Route, Link, Switch, HashRouter as Router } from 'react-router-dom';
 import { Home } from './Home';
 import { About } from './About';
 import { Header } from './Header';
+import { Post } from './Post';
 import { Posts } from './Posts';
 import './App.css';
 
@@ -32,6 +33,7 @@ export const App = () => {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/about' component={About} />
+        <Route path='/posts/:postId' component={Post} />
         <Route path='/posts' component={Posts} />
       </Switch>
     </Router>
