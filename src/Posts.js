@@ -26,14 +26,14 @@ export class Posts extends Component {
             {post.hasOwnProperty('_authorName') ? post._authorName : 'Anonymous'}
           </div>
           <div className="content">
-            {post.Content}
+            {post.Content.slice(0, 230) + ' ...'}
           </div>
         </div>
       );
     });
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const environment = process.env.NODE_ENV || 'production';
     const url = environment === 'production'
       ? 'https://lupus-yonderboy-go-env.wv5mqwfbqj.us-east-1.elasticbeanstalk.com/'
@@ -47,7 +47,7 @@ export class Posts extends Component {
     const timer = (time) => {
       setTimeout(() => {
         if (this.state.postsLoading) {
-          time += 50;
+          time += 10;
           this.setState({ time: time });
           timer(time);
         }
