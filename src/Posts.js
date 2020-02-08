@@ -22,11 +22,9 @@ export class Posts extends Component {
             {post.Title}
           </div>
           <div className="author">
-            {
-              post.hasOwnProperty('_authorName')
+            {post.hasOwnProperty('_authorName')
                 ? post._authorName
-                : 'Anonymous'
-            }
+                : 'Anonymous'}
           </div>
           <div className="content">
             {post.Content.slice(0, 230) + ' ...'}
@@ -100,15 +98,10 @@ export class Posts extends Component {
   render() {
     return (
       <Container>
-        {
-          this.state.loading
+        {this.state.loading
             ? this.state.time
-            : this.state.error
-        } {
-          this.state.loading
-            ? null
-            : this.renderPosts(this.state.posts)
-        }
+            : this.state.error}
+        {this.renderPosts(this.state.posts)}
       </Container>
     );
   }
