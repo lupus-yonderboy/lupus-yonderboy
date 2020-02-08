@@ -5,29 +5,39 @@ import { connect } from 'react-redux';
 import { Container } from './Container';
 import './Posts.css';
 
-import { setPosts } from './actions';
+import {
+  setPosts,
+  setPost
+} from './actions';
+import { fetchPostsAndAuthors } from './fetchPostsAndAuthors';
 
 class Posts extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        loading: null,
-        time: null,
-        error: null,
-      };
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: null,
+      time: null,
+      error: null,
+    };
+  }
+
+  setPost(post) {
+    this.props.setPost(post);
+  }
 
   renderPosts(posts) {
     return posts.map((post) => {
       return (
         <div key={post.Id}>
-          <Link to={`/posts/${post.Id}`} className="title">
-            {post.Title}
-          </Link>
+          <Link
+            to={`/posts/${post.Id}`}
+            onClick={() => this.setPost(post)}
+            className="title"
+          >{post.Title}</Link>
           <div className="author">
             {post.hasOwnProperty('_authorName')
                 ? post._authorName
-                : 'Anonymous'}
+                : '?'}
           </div>
           <div className="content">
             {post.Content.slice(0, 230) + ' ...'}
@@ -38,32 +48,6 @@ class Posts extends Component {
   }
 
   componentDidMount() {
-    const environment = process.env.NODE_ENV || 'production';
-    const url = environment === 'production'
-      ? 'https://lupus-yonderboy-go-env.wv5mqwfbqj.us-east-1.elasticbeanstalk.com/'
-      : 'http://localhost:5000/';
-
-    const fetchPosts = fetch(url + 'posts')
-      .then((res) => res.json());
-
-    const fetchAuthors = fetch(url + 'authors')
-      .then((res) => res.json());
-
-    const associatePostsWithAuthors = ({ postsRes, authorsRes }) => {
-      const authors = {};
-      const posts = [];
-      for (let author of authorsRes) {
-        authors[author.Id] = author.Name;
-      }
-      for (let post of postsRes) {
-        posts.push({
-          _authorName: authors[post.Author],
-          ...post,
-        });
-      }
-      return posts;
-    };
-
     const timer = (time) => {
       setTimeout(() => {
         if (this.state.loading) {
@@ -79,17 +63,11 @@ class Posts extends Component {
     }
 
     this.setState({ loading: true });
-    
     timer(0);
 
-    Promise.all([fetchPosts, fetchAuthors])
-      .then((res) => {
-        this.props.setPosts(
-          associatePostsWithAuthors({
-            postsRes: res[0],
-            authorsRes: res[1],
-          }),
-        );
+    fetchPostsAndAuthors()
+      .then((posts) => {
+        this.props.setPosts(posts);
       })
       .catch(() => {
         this.setState({ error: ':(' });
@@ -109,15 +87,19 @@ class Posts extends Component {
       </Container>
     );
   }
-};
+}
 
 const mapStateToProps = (state) => ({
   posts: state.posts,
+  post: state.post,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   setPosts: (posts) => {
     return dispatch(setPosts(posts));
+  },
+  setPost: (post) => {
+    return dispatch(setPost(post));
   },
 });
 

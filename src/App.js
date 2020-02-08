@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { Home } from './Home';
 import { About } from './About';
 import { Header } from './Header';
-import { Post } from './Post';
+import Post from './Post';
 import Posts from './Posts';
 
 import './App.css';
