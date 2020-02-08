@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8baa7cb83beddda34a9414bf1384c4e3",
+    "revision": "c2f163406a8900dedca713457e725509",
     "url": "/lupus-yonderboy/index.html"
   },
   {
-    "revision": "f1eeac1ea48c81766047",
+    "revision": "e6e315eb9b24f3356758",
     "url": "/lupus-yonderboy/static/css/main.3ed59fa7.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/lupus-yonderboy/static/js/2.581638a6.chunk.js.LICENSE"
   },
   {
-    "revision": "f1eeac1ea48c81766047",
-    "url": "/lupus-yonderboy/static/js/main.dbfbd98f.chunk.js"
+    "revision": "e6e315eb9b24f3356758",
+    "url": "/lupus-yonderboy/static/js/main.6d48a2c2.chunk.js"
   },
   {
     "revision": "3a9d2f3ed0929d7a6a19",
