@@ -37,7 +37,7 @@ export class Posts extends Component {
     const environment = process.env.NODE_ENV || 'production';
     const url = environment === 'production'
       ? 'https://lupus-yonderboy-go-env.wv5mqwfbqj.us-east-1.elasticbeanstalk.com/'
-      : 'https://localhost:5000/';
+      : 'http://localhost:5000/';
 
     this.setState({
       postsLoading: true,
