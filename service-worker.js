@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/lupus-yonderboy/precache-manifest.b7804a38b2ba7374f01f083d83d2a786.js"
+  "/lupus-yonderboy/precache-manifest.284f5e7637b41813480e36fa0b22e1bc.js"
 );
 
 self.addEventListener('message', (event) => {
