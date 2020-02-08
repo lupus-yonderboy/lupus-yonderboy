@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Container } from './Container';
 import './Posts.css';
@@ -18,9 +19,9 @@ export class Posts extends Component {
     return posts.map((post) => {
       return (
         <div key={post.Id}>
-          <div className="title">
+          <Link to={`/posts/${post.Id}`} className="title">
             {post.Title}
-          </div>
+          </Link>
           <div className="author">
             {post.hasOwnProperty('_authorName')
                 ? post._authorName
