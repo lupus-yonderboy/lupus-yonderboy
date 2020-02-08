@@ -48,6 +48,10 @@ class Posts extends Component {
   }
 
   componentDidMount() {
+    if (this.props.posts.length) {
+      return;
+    }
+
     const timer = (time) => {
       setTimeout(() => {
         if (this.state.loading) {
@@ -57,10 +61,6 @@ class Posts extends Component {
         }
       }, 10);
     };
-
-    if (this.props.posts.length) {
-      return;
-    }
 
     this.setState({ loading: true });
     timer(0);

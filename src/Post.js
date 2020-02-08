@@ -7,19 +7,61 @@ import {
   setPosts,
   setPost
 } from './actions';
+import { fetchPostsAndAuthors } from './fetchPostsAndAuthors';
 
 class Post extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: null,
+      time: null,
+      error: null,
+    };
+  }
+
   componentDidMount() {
-    if (this.props.post) {
+    if (this.props.post.Content) {
       return;
     }
 
-    if (this.props.posts) {
-      debugger;
+    const postId = parseInt(this.props.match.params.postId);
+    const findPost = (posts, id) => {
+      return posts.find((p) => {
+        return p.Id === id;
+      });
+    };
+
+    if (this.props.posts.length) {
+      const post = findPost(this.props.posts, postId);
+      this.props.setPost(post);
       return;
     }
 
+    const timer = (time) => {
+      setTimeout(() => {
+        if (this.state.loading) {
+          time += 10;
+          this.setState({ time: time });
+          timer(time);
+        }
+      }, 10);
+    };
 
+    this.setState({ loading: true });
+    timer(0);
+
+    fetchPostsAndAuthors()
+      .then((posts) => {
+        const post = findPost(posts, postId);
+        this.props.setPost(post);
+        this.props.setPosts(posts);
+      })
+      .catch(() => {
+        this.setState({ error: ':(' });
+      })
+      .finally(() => {
+        this.setState({ loading: false });
+      })
   }
 
   render() {
