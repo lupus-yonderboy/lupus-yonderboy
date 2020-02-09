@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import { Container } from './Container';
 import './Posts.css';
-
 import {
   setPosts,
   setPost
@@ -81,8 +79,8 @@ class Posts extends Component {
     return (
       <Container>
         {this.state.loading
-            ? this.state.time
-            : this.state.error}
+          ? this.state.time
+          : this.state.error}
         {this.renderPosts(this.props.posts)}
       </Container>
     );

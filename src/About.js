@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { Container } from './Container';
-
 import { setPosts } from './actions';
 import { fetchPostsAndAuthors } from './fetchPostsAndAuthors';
 
@@ -25,7 +23,7 @@ class About extends Component {
       </Container>
     );
   }
-};
+}
 
 const mapStateToProps = (state) => ({
   posts: state.posts,

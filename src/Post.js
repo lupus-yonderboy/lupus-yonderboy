@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { Container } from './Container';
-
+import './Posts.css'
 import {
   setPosts,
   setPost
@@ -62,15 +61,19 @@ class Post extends Component {
       .finally(() => {
         this.setState({ loading: false });
       })
-  }
+  } // end componentDidMount
 
   render() {
     return (
       <Container>
         {this.state.loading
-            ? this.state.time
-            : this.state.error}
-        {this.props.post.Content}
+          ? this.state.time
+          : this.state.error}
+        <div>
+          <div className="title">{this.props.post.Title}</div>
+          <div className="author">{this.props.post._authorName}</div>
+          <div className="content">{this.props.post.Content}</div>
+        </div>
       </Container>
     );
   }

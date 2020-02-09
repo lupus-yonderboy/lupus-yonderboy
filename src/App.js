@@ -1,13 +1,11 @@
 import React from 'react';
 import { Route, Link, Switch, HashRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-
 import { Header } from './Header';
 import About from './About';
 import Home from './Home';
 import Post from './Post';
 import Posts from './Posts';
-
 import './App.css';
 
 export const App = (props) => {
