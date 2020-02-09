@@ -67,6 +67,9 @@ class Post extends Component {
   render() {
     return (
       <Container>
+        {this.state.loading
+            ? this.state.time
+            : this.state.error}
         {this.props.post.Content}
       </Container>
     );
