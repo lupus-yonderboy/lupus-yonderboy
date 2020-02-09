@@ -84,7 +84,7 @@ class Post extends Component {
               {moment(this.props.post.DateCreated).utc().format("MMM DD, YYYY [at] hh:mma")} {
                 this.props.post.DateUpdated === this.props.post.DateCreated
                  ? null
-                 : `| updated ${moment(this.props.post.DateUpdated).utc().format("MMM DD, YYYY [at] HH:mma")}`
+                 : `| updated ${moment(this.props.post.DateUpdated).utc().format("MMM DD, YYYY [at] hh:mma")}`
               } UTC
             </div>
             <div className="content">{htmlParser.parse(this.props.post.Content)}</div>
