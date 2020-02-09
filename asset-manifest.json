@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/lupus-yonderboy/static/css/main.16a07fdc.chunk.css",
-    "main.js": "/lupus-yonderboy/static/js/main.f1763cd3.chunk.js",
-    "main.js.map": "/lupus-yonderboy/static/js/main.f1763cd3.chunk.js.map",
+    "main.js": "/lupus-yonderboy/static/js/main.6193fc1c.chunk.js",
+    "main.js.map": "/lupus-yonderboy/static/js/main.6193fc1c.chunk.js.map",
     "runtime-main.js": "/lupus-yonderboy/static/js/runtime-main.5bd1460a.js",
     "runtime-main.js.map": "/lupus-yonderboy/static/js/runtime-main.5bd1460a.js.map",
-    "static/js/2.94537882.chunk.js": "/lupus-yonderboy/static/js/2.94537882.chunk.js",
-    "static/js/2.94537882.chunk.js.map": "/lupus-yonderboy/static/js/2.94537882.chunk.js.map",
+    "static/js/2.07688d8a.chunk.js": "/lupus-yonderboy/static/js/2.07688d8a.chunk.js",
+    "static/js/2.07688d8a.chunk.js.map": "/lupus-yonderboy/static/js/2.07688d8a.chunk.js.map",
     "index.html": "/lupus-yonderboy/index.html",
-    "precache-manifest.1abf36955a1f129415fcff3414f810aa.js": "/lupus-yonderboy/precache-manifest.1abf36955a1f129415fcff3414f810aa.js",
+    "precache-manifest.dc1ccaa442c9f8621be5241addac15bc.js": "/lupus-yonderboy/precache-manifest.dc1ccaa442c9f8621be5241addac15bc.js",
     "service-worker.js": "/lupus-yonderboy/service-worker.js",
     "static/css/main.16a07fdc.chunk.css.map": "/lupus-yonderboy/static/css/main.16a07fdc.chunk.css.map",
-    "static/js/2.94537882.chunk.js.LICENSE": "/lupus-yonderboy/static/js/2.94537882.chunk.js.LICENSE"
+    "static/js/2.07688d8a.chunk.js.LICENSE": "/lupus-yonderboy/static/js/2.07688d8a.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.5bd1460a.js",
-    "static/js/2.94537882.chunk.js",
+    "static/js/2.07688d8a.chunk.js",
     "static/css/main.16a07fdc.chunk.css",
-    "static/js/main.f1763cd3.chunk.js"
+    "static/js/main.6193fc1c.chunk.js"
   ]
 }
