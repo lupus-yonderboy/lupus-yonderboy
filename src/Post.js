@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as moment from 'moment';
+import { Parser } from 'html-to-react';
 import { connect } from 'react-redux';
 import { Container } from './Container';
 import './Posts.css'
@@ -65,6 +66,7 @@ class Post extends Component {
   }
 
   render() {
+    const htmlParser = new Parser();
     return (
       <Container>
         {this.state.loading
@@ -85,7 +87,7 @@ class Post extends Component {
                  : `| updated ${moment(this.props.post.DateUpdated).utc().format("MMM DD, YYYY [at] HH:mma")}`
               } UTC
             </div>
-            <div className="content">{this.props.post.Content}</div>
+            <div className="content">{htmlParser.parse(this.props.post.Content)}</div>
           </div>
         }
       </Container>
