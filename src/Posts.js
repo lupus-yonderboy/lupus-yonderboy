@@ -81,7 +81,9 @@ class Posts extends Component {
         {this.state.loading
           ? this.state.time
           : this.state.error}
-        {this.renderPosts(this.props.posts)}
+        {this.state.loading
+          ? null
+          : this.renderPosts(this.props.posts)}
       </Container>
     );
   }

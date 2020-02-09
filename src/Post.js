@@ -69,11 +69,17 @@ class Post extends Component {
         {this.state.loading
           ? this.state.time
           : this.state.error}
-        <div>
-          <div className="title">{this.props.post.Title}</div>
-          <div className="author">{this.props.post._authorName}</div>
-          <div className="content">{this.props.post.Content}</div>
-        </div>
+        {
+          this.state.loading
+            ?
+          null
+            :
+          <div>
+            <div className="title">{this.props.post.Title}</div>
+            <div className="author">{this.props.post._authorName}</div>
+            <div className="content">{this.props.post.Content}</div>
+          </div>
+        }
       </Container>
     );
   }
