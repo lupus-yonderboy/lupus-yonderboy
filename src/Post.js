@@ -20,32 +20,39 @@ class Post extends Component {
   }
 
   componentDidMount() {
-    const timer = (time) => {
-      setTimeout(() => {
-        if (this.state.loading) {
-          time += 10;
-          this.setState({ time: time });
-          timer(time);
-        }
-      }, 10);
-    };
+    if (!this.props.posts.length) {
+      const timer = (time) => {
+        setTimeout(() => {
+          if (this.state.loading) {
+            time += 10;
+            this.setState({ time: time });
+            timer(time);
+          }
+        }, 10);
+      };
 
-    this.setState({ loading: true });
-    timer(0);
+      this.setState({ loading: true });
+      timer(0);
+      
+      fetchPostsAndAuthors()
+        .then((posts) => {
+          const id = parseInt(this.props.match.params.postId);
+          const post = getPost(posts, id);
+          this.props.setPost(post);
+          this.props.setPosts(posts);
+        })
+        .catch(() => {
+          this.setState({ error: ':(' });
+        })
+        .finally(() => {
+          this.setState({ loading: false });
+        })
+    } else {
+      const id = parseInt(this.props.match.params.postId);
+      const post = getPost(this.props.posts, id);
+      this.props.setPost(post);
+    }
 
-    fetchPostsAndAuthors()
-      .then((posts) => {
-        const id = parseInt(this.props.match.params.postId);
-        const post = getPost(posts, id);
-        this.props.setPost(post);
-        this.props.setPosts(posts);
-      })
-      .catch(() => {
-        this.setState({ error: ':(' });
-      })
-      .finally(() => {
-        this.setState({ loading: false });
-      })
   } // end componentDidMount
 
   componentDidUpdate(prevProps) {
