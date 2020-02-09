@@ -4,10 +4,11 @@
   text-decoration: none;
 }
 
-.author {
+.content {
   margin-bottom: 1em;
+  margin-top: 1em;
 }
 
-.content {
+.date {
   margin-bottom: 1em;
 }

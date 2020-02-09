@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as moment from 'moment';
 import { connect } from 'react-redux';
 import { Container } from './Container';
 import './Posts.css'
@@ -33,7 +34,7 @@ class Post extends Component {
 
       this.setState({ loading: true });
       timer(0);
-      
+
       fetchPostsAndAuthors()
         .then((posts) => {
           const id = parseInt(this.props.match.params.postId);
@@ -77,6 +78,13 @@ class Post extends Component {
           <div>
             <div className="title">{this.props.post.Title}</div>
             <div className="author">{this.props.post._authorName}</div>
+            <div className="date">
+              {moment(this.props.post.DateCreated).format("MMM DD, YYYY [at] hh:MMa")} {
+                this.props.post.DateUpdated === this.props.post.DateCreated
+                 ? null
+                 : `| updated ${moment(this.props.post.DateUpdated).format("MMM DD, YYYY [at] hh:MMa")}`
+              }
+            </div>
             <div className="content">{this.props.post.Content}</div>
           </div>
         }
