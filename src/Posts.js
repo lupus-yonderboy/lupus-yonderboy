@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as moment from 'moment';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Container } from './Container';
@@ -24,7 +25,10 @@ class Posts extends Component {
   }
 
   renderPosts(posts) {
-    return posts.map((post) => {
+    const sortedPosts = posts.sort((a, b) => {
+      return new Date(b.DateCreated) - new Date(a.DateCreated);
+    });
+    return sortedPosts.map((post) => {
       const strippedContent = post.Content.replace(/<p>/g, '').replace(/<\/p>/g, '');
       return (
         <div key={post.Id}>
@@ -37,6 +41,7 @@ class Posts extends Component {
             {post.hasOwnProperty('_authorName')
                 ? post._authorName
                 : '?'}
+            {` | ${moment(post.DateCreated).utc().format("MMM DD, YYYY")}`}
           </div>
           <div className="content">
             {strippedContent.slice(0, 230) + '...'}
