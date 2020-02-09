@@ -25,6 +25,7 @@ class Posts extends Component {
 
   renderPosts(posts) {
     return posts.map((post) => {
+      const strippedContent = post.Content.replace(/<p>/g, '').replace(/<\/p>/g, '');
       return (
         <div key={post.Id}>
           <Link
@@ -38,7 +39,7 @@ class Posts extends Component {
                 : '?'}
           </div>
           <div className="content">
-            {post.Content.slice(0, 230) + ' ...'}
+            {strippedContent.slice(0, 230) + '...'}
           </div>
         </div>
       );
