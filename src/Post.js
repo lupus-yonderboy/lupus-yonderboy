@@ -7,6 +7,7 @@ import {
   setPost
 } from './actions';
 import { fetchPostsAndAuthors } from './fetchPostsAndAuthors';
+import { getPost } from './getPost';
 
 class Post extends Component {
   constructor(props) {
@@ -19,23 +20,6 @@ class Post extends Component {
   }
 
   componentDidMount() {
-    if (this.props.post.Content) {
-      return;
-    }
-
-    const postId = parseInt(this.props.match.params.postId);
-    const findPost = (posts, id) => {
-      return posts.find((p) => {
-        return p.Id === id;
-      });
-    };
-
-    if (this.props.posts.length) {
-      const post = findPost(this.props.posts, postId);
-      this.props.setPost(post);
-      return;
-    }
-
     const timer = (time) => {
       setTimeout(() => {
         if (this.state.loading) {
@@ -51,7 +35,8 @@ class Post extends Component {
 
     fetchPostsAndAuthors()
       .then((posts) => {
-        const post = findPost(posts, postId);
+        const id = parseInt(this.props.match.params.postId);
+        const post = getPost(posts, id);
         this.props.setPost(post);
         this.props.setPosts(posts);
       })
@@ -62,6 +47,14 @@ class Post extends Component {
         this.setState({ loading: false });
       })
   } // end componentDidMount
+
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      const id = parseInt(this.props.match.params.postId);
+      const post = getPost(this.props.posts, id);
+      this.props.setPost(post);
+    }
+  }
 
   render() {
     return (
