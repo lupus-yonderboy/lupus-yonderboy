@@ -47,7 +47,7 @@ h1 {
 }
 
 .content h2 {
-  margin-top: 2em;
+  margin-top: 2.5em;
   border-bottom-style: solid;
   border-bottom-color: #b1b1b3;
   border-bottom-width: 1px;
@@ -60,4 +60,8 @@ h1 {
 
 .content blockquote {
   font-size: 12.5pt;
+}
+
+h2.subhed + p {
+  margin-top: 0.625em;
 }
