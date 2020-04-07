@@ -78,10 +78,12 @@ class Post extends Component {
           null
             :
           <div>
-            <div className="title">{this.props.post.Title}</div>
+            <h1 className="title">{this.props.post.Title}</h1>
             <div className="author">{this.props.post._authorName}</div>
             <div className="date">
-              {moment(this.props.post.DateCreated).utc().format("MMM DD, YYYY [at] hh:mma")} {
+              {
+                moment(this.props.post.DateCreated).utc().format("MMM DD, YYYY [at] hh:mma")
+              } {
                 this.props.post.DateUpdated === this.props.post.DateCreated
                  ? null
                  : `| updated ${moment(this.props.post.DateUpdated).utc().format("MMM DD, YYYY [at] hh:mma")}`

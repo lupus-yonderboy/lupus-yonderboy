@@ -8,6 +8,7 @@ import {
   setPosts,
   setPost
 } from './actions';
+import { abbreviate } from './helpers';
 import { fetchPostsAndAuthors } from './fetchPostsAndAuthors';
 
 class Posts extends Component {
@@ -35,16 +36,16 @@ class Posts extends Component {
           <Link
             to={`/posts/${post.Id}`}
             onClick={() => this.setPost(post)}
-            className="title"
+            className="index-title"
           >{post.Title}</Link>
-          <div className="author">
+          <div className="index-author">
             {post.hasOwnProperty('_authorName')
                 ? post._authorName
                 : '?'}
             {` | ${moment(post.DateCreated).utc().format("MMM DD, YYYY")}`}
           </div>
-          <div className="content">
-            {strippedContent.slice(0, 230) + '...'}
+          <div className="index-content">
+            {abbreviate(strippedContent.slice(0, 230))}
           </div>
         </div>
       );

@@ -1,3 +1,9 @@
+* {
+  font-family: monospace;
+  font-size: 11pt;
+  color: #202340;
+}
+
 .header-span {
   margin-right: 5rem;
 }
