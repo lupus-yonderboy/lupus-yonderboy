@@ -47,6 +47,7 @@ h1 {
 }
 
 .content h2 {
+  padding-left: 2%;
   margin-top: 2.5em;
   border-bottom-style: solid;
   border-bottom-color: #b1b1b3;
