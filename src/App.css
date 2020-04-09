@@ -12,3 +12,15 @@
   text-decoration: none;
   color: black;
 }
+
+@media only screen and (max-width: 57rem) {
+  .container {
+    max-width: 50rem;
+    margin: 2rem 2rem 5rem 2rem;
+  }
+
+  .header {
+    max-width: 50rem;
+    margin: 2rem;
+  }
+}
