@@ -14,16 +14,11 @@ import Posts from './Posts';
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    debugger;
     return (
       <Provider store={this.props.store}>
         <Router>
-          <div className={this.props.darkMode ? '.dark' : '.light'}>
+          <div className={this.props.darkMode ? 'dark' : 'light'}>
             <Header>
               <div>
                 <span className='header-span'>
@@ -39,6 +34,21 @@ class App extends Component {
                 <span className='header-span'>
                   <Link to='/posts' className='header-link'>
                     POSTS
+                  </Link>
+                </span>
+                <span className='header-span'>
+                  <Link to='#'
+                    className='header-link'
+                    onClick={
+                      this.props.darkMode
+                        ? this.props.setLight
+                        : this.props.setDark
+                    }>
+                    {
+                      this.props.darkMode
+                        ? 'LIGHT'
+                        : 'DARK'
+                    }
                   </Link>
                 </span>
               </div>

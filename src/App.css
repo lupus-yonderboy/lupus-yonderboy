@@ -1,46 +1,51 @@
 * {
   font-family: monospace;
   font-size: 11pt;
+}
+
+.light {
   color: #202340;
+  min-height: 100rem;
+}
+
+.dark {
+  background-color: #202340;
+  color: #b1b1b3;
+  min-height: 100rem;
 }
 
 .header-span {
-  margin-right: 5rem;
+  padding-right: 5rem;
 }
 
 .header-link {
   text-decoration: none;
-  color: black;
+  color: #202340;
+}
+
+.dark .header-link {
+  text-decoration: none;
+  color: #b1b1b3;
 }
 
 @media only screen and (max-width: 57rem) {
-  .container {
-    max-width: 50rem;
-    margin: 2rem 2rem 5rem 2rem;
-  }
-
   .header {
-    max-width: 50rem;
-    margin: 2rem;
+    width: 100%;
+    padding: 2rem;
   }
 
   .header-span {
-    margin-right: 3rem;
+    padding-right: 3rem;
   }
 }
 
 @media only screen and (max-width: 34rem) {
-  .container {
-    max-width: 31rem;
-    margin: 1.5rem 1.5rem 5rem 1.5rem;
-  }
-
   .header {
-    max-width: 31rem;
-    margin: 1.5rem;
+    width: 100%;
+    padding: 1.5rem;
   }
 
   .header-span {
-    margin-right: 2rem;
+    padding-right: 1.2rem;
   }
 }

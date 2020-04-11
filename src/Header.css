@@ -1,4 +1,14 @@
 .header {
-  max-width: 50rem;
-  margin: 2rem 5rem;
+  width: 100%;
+  padding: 2rem 5rem;
+  position: fixed;
+  top: 0;
+}
+
+.dark .header {
+  background-color: #202340;
+}
+
+.light .header {
+  background-color: white;
 }
