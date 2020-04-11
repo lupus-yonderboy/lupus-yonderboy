@@ -24,3 +24,15 @@
     margin: 2rem;
   }
 }
+
+@media only screen and (max-width: 34rem) {
+  .container {
+    max-width: 31rem;
+    margin: 1.5rem 1.5rem 5rem 1.5rem;
+  }
+
+  .header {
+    max-width: 31rem;
+    margin: 1.5rem;
+  }
+}
