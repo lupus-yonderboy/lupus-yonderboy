@@ -66,3 +66,7 @@ h1 {
 h2.subhed + p {
   margin-top: 0.625em;
 }
+
+.content sub {
+  font-size: 11pt;
+}
