@@ -14,11 +14,21 @@ import Posts from './Posts';
 import './App.css';
 
 class App extends Component {
+  componentDidMount() {
+    const body = document.querySelector('body');
+    const minHeight = window.innerHeight
+      || document.documentElement.clientHeight
+      || body.clientHeight;
+    let outerDiv = document.querySelector('.outer-div');
+    outerDiv.style = `min-height: ${minHeight}px;`;
+    body.style = 'margin: 0;';
+  }
+
   render() {
     return (
       <Provider store={this.props.store}>
         <Router>
-          <div className={this.props.darkMode ? 'dark' : 'light'}>
+          <div className={`outer-div ${this.props.darkMode ? 'dark' : 'light'}`}>
             <Header>
               <div>
                 <span className='header-span'>
@@ -64,7 +74,7 @@ class App extends Component {
       </Provider>
     );
   }
-};
+}
 
 const mapStateToProps = (state) => ({
   darkMode: state.darkMode,

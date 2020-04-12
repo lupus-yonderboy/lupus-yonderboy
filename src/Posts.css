@@ -77,8 +77,13 @@ h1 {
   font-size: 12.5pt;
 }
 
+h2.subhed {
+  margin-bottom: 0;
+}
+
 h2.subhed + p {
-  padding-top: 0.625em;
+  padding-top: 1rem;
+  margin-top: 0;
 }
 
 .content sub {

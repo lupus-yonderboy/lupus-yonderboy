@@ -5,13 +5,11 @@
 
 .light {
   color: #202340;
-  min-height: 100rem;
 }
 
 .dark {
   background-color: #202340;
   color: #b1b1b3;
-  min-height: 100rem;
 }
 
 .header-span {
