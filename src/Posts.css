@@ -20,8 +20,12 @@
   color: #b1b1b3;
 }
 
-p {
+p, blockquote {
   padding-top: 1rem;
+}
+
+h2 {
+  padding-top: 2.5rem;
 }
 
 .title,
@@ -32,7 +36,6 @@ p {
 
 h1 {
   font-size: 32pt;
-  padding-bottom: 0.5rem;
   text-decoration: none;
   color: #202340;
   margin: 0;
@@ -52,7 +55,8 @@ h1 {
 }
 
 .content {
-  padding-bottom: 3em;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
 }
 
 .content * {
@@ -75,6 +79,7 @@ h1 {
 
 .content blockquote {
   font-size: 12.5pt;
+  margin-right: 0;
 }
 
 h2.subhed {
