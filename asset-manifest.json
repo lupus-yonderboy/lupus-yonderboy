@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/lupus-yonderboy/static/css/main.5aa7e138.chunk.css",
+    "main.css": "/lupus-yonderboy/static/css/main.0c793fd9.chunk.css",
     "main.js": "/lupus-yonderboy/static/js/main.4b52683b.chunk.js",
     "main.js.map": "/lupus-yonderboy/static/js/main.4b52683b.chunk.js.map",
     "runtime-main.js": "/lupus-yonderboy/static/js/runtime-main.5bd1460a.js",
@@ -8,15 +8,15 @@
     "static/js/2.e127ceb8.chunk.js": "/lupus-yonderboy/static/js/2.e127ceb8.chunk.js",
     "static/js/2.e127ceb8.chunk.js.map": "/lupus-yonderboy/static/js/2.e127ceb8.chunk.js.map",
     "index.html": "/lupus-yonderboy/index.html",
-    "precache-manifest.915cd1fac1377b237fe38119c4d24bcd.js": "/lupus-yonderboy/precache-manifest.915cd1fac1377b237fe38119c4d24bcd.js",
+    "precache-manifest.7eb12e1797e67b78b3fa2b89d10e774a.js": "/lupus-yonderboy/precache-manifest.7eb12e1797e67b78b3fa2b89d10e774a.js",
     "service-worker.js": "/lupus-yonderboy/service-worker.js",
-    "static/css/main.5aa7e138.chunk.css.map": "/lupus-yonderboy/static/css/main.5aa7e138.chunk.css.map",
+    "static/css/main.0c793fd9.chunk.css.map": "/lupus-yonderboy/static/css/main.0c793fd9.chunk.css.map",
     "static/js/2.e127ceb8.chunk.js.LICENSE": "/lupus-yonderboy/static/js/2.e127ceb8.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.5bd1460a.js",
     "static/js/2.e127ceb8.chunk.js",
-    "static/css/main.5aa7e138.chunk.css",
+    "static/css/main.0c793fd9.chunk.css",
     "static/js/main.4b52683b.chunk.js"
   ]
 }
