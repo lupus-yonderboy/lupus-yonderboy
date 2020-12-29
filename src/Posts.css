@@ -116,3 +116,7 @@ h3.sub-subhed + p {
 .content sub {
   font-size: 11pt;
 }
+
+.inline-image {
+  max-width: 100%;
+}
